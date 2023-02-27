@@ -1,5 +1,8 @@
+import abstractizare.Pisica;
+import abstractizare.Sub3;
 import mostenire.*;
 import polimorfism.Calcul;
+import polimorfism.Romb;
 
 public class Main {
     public static void main(String args[])
@@ -36,9 +39,29 @@ public class Main {
         //endregion
 
         //region polimorfism
+        //Overriding
+        Romb romb = new Romb("cenusiu", 5, 3.12, 4, 1.13446);
+        System.out.println(romb.Aria());
+        System.out.println(romb.toString());
+
+        //Overloading
         System.out.println(Calcul.Inmultire(2,3));
         System.out.println(Calcul.Inmultire(2.33, 3.33));
         System.out.println(Calcul.Inmultire(4,5,6));
+        //endregion
+
+        //region abstractizare
+        //clasa abstracta
+        Pisica pisica = new Pisica(4,"mica", "miau");
+        System.out.println(pisica.toString());
+        System.out.println(pisica.randomMethod());
+
+        //interfete
+        Sub3 sub3 = new Sub3(1000);
+        sub3.Deposit(500);
+        sub3.Withdraw(755);
+        sub3.Deposit(50);
+        System.out.println(sub3.ToString());
         //endregion
     }
 }

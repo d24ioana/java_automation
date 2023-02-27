@@ -7,9 +7,8 @@ public class FiguraGeometrica {
         this.culoare = culoare;
     }
 
-    public double Aria(){
-        return 0;
-    }
+    public double Aria() { return 0; }
+    //didn't make the class and methods abstract because an abstract class cannot be instantiated
 
     public double Perimetru(){
         return 0;
