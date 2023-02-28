@@ -1,0 +1,4 @@
+Utils\Browser.class
+PageObjects\HomePage.class
+PageObjects\RegisterPage.class
+PageObjects\SignInPage.class

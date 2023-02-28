@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static java.lang.Thread.sleep;
+
 public class SignInPage {
     Browser browser;
     private WebDriver driver;
@@ -20,14 +22,24 @@ public class SignInPage {
     }
 
     public SignInPage LoginWithInvalidCredentials(){
+        emailField.click();
         emailField.sendKeys("email@gmail.com");
+        passwordField.click();
         passwordField.sendKeys("password");
         enterButton.click();
         return new SignInPage(driver);
     }
 
+    public boolean LoginErrorDisplayed() {
+        return errorMessage.isDisplayed();
+    }
+
+    public String GetLoginErrorMessage() {
+        return errorMessage.getText();
+    }
+
     /*public SignInPage LoginWithValidCredentials(){
-        emailField.sendKeys("");
+        emailField.sendKeys(""); //do i need to selectelementbyvalue first?
         passwordField.sendKeys("");
         enterButton.click();
         return new

@@ -1,0 +1,91 @@
+Alex Dorha: 15 feb 2023
+Tema: research + proiect
+- InteliJ (de instalat), Comunity - done
+
+- Maven (ce face) pt java? 
+  Tool de build pentru proiectele Java, gestioneaza structura, lifecycle-ul. Este usor cu el sa ne luam dependintele (mvnrepository)
+  Toate info despre proiect sunt in fisierul pom xml.
+  
+  Maven=accumulator of knowledge este un tool care poate gestiona toate proiectele Java, de la build, la dependinte, la documentatie, 
+  plugin-uri etc. Arhitectura POM Project Object Model. xml
+
+  A JAR file is a package file format typically used to aggregate many Java class files and associated metadata and resources into one 
+  file for distribution. JAR files are archive files that include a Java-specific manifest file. They are built on the ZIP format and 
+  typically have a .jar file extension. 
+
+  Maven repository (JAR files for dependencies = libraries required for a project)
+
+  An artifact is an output generated after a Maven project build. It can be, for example, a jar, war, or any other executable file. Also, 
+  Maven artifacts include five key elements, groupId, artifactId, version, packaging, and classifier.
+
+  https://www.educba.com/what-is-maven/
+
+- JUnit/TestNG (diferente)
+  TestNG Next Generation - deriva din Junit 
+  Are mai multe annotations decat JUnit
+  Suporta Parallel Test Execution, Junit suporta doar cu JUnit5; 
+  Junit e impartit in mai multe module, ex Junit jupiter pt parametrizare; TestNG e un singur modul pentru toate
+  Cu testNG putem face si dependency testing
+  This means in a set of test methods, if the initial test fails, then all subsequent dependent tests will be skipped, not marked as 
+  failed as in the case for JUnit.
+  Cu TestNG putem crea test reports
+  In TestNG putem face grupuri de teste 
+
+- API (de ce trebe backend)
+  An application programming interface (API) is code that enables two software programs to communicate. An API defines how a developer 
+  should request services from an operating system (OS) or other application, and expose data within different contexts and across 
+  multiple channels.
+  Interface can be thought of as a contract of service between two applications. This contract defines how the two communicate with each 
+  other using requests and responses.
+  When an application or client requests some information (data) to the API, the API redirects the request to the appropriate source 
+  and passes the received response to the client.
+
+  Set de functii/proceduri pentru a accesa o DB
+  Wrapper pentru acces mai simplu
+  Implementat atunci cand vrem sa avem acces pe un alt protocol (ex.: web apis to interract with a DB or hardware devices using http)
+  Bridge intre backend si frontend
+  Colectie de endpoint-uri 
+  (Swagger UI pentru a putea testa un API?!?)
+
+- comunicare client-server (frontend-backend)
+  Server = aplicatie, program, software (apache, tomcat...); asteapta un request si da un raspuns
+  Server web = are implementat protocol http ( hyper text transfer protocol)
+  Client (web)/http = browser 
+  
+  app web = app care ruleaza in browser (backend + frontend + infrastructura + API)
+
+  SESIUNE = comunicatie intre client si server ( header KEEP ALIVE)
+
+- request/response (ce contin)
+  REQUEST http: metoda(get, post, put, delete...), URL, http req headers (ce tip de fisiere cere clientul - xml, json, etc = formate de 
+  tip de date), querry string, payload (date trimise cu met POST spre un controller pe server)
+
+  RESPONSE http: response code (200, 400, etc), response message(nu intotdeauna), response body, response headers(instructiuni pt browser: 
+  content length, conncetion, server name, cookies, content security policy...)  
+  
+  Request http -> Server http -> raspuns http
+  Nu pot cere un request de exemplu get cu header xml si sa primesc ca raspuns un json
+
+- proiect maven in intelij cu testNG (dependinta adaugata in pom) in care sa fac: clasa, variabila, constructori, metoda, obiect
+  ex.: clasa cursant (obiect de tip cursant) cu un constructor (param ex nume, varsta ect), o metoda (cu if uri) ex.: trecut sau picat la 
+  un examen returneaza un bool true sau false sau un mesaj string in functie daca nota data e mai <5 sau >=
+
+-----------------------
+Alex Dorha: 17 feb 2023
+request = de tip get post etc., are header(ce fel de date json xml etc) + body
+response = header + body + response code + status mesaj (1xx este informational, 2xx = succesful, 3xx - redirection, 4xx - client error, 
+5xx - server error)
+clientul trimite un request la server, serverul raspunde cu un raspuns
+
+De facut:
+- Un proiect cu cate un pachet in care sa fie un exemplu de fiecare concept oop (mostenire incapsulare polimorfism abstractizare) 
+  Pentru abstractizare facem doua exemple: clase abstracte vs interfete
+- Alt proiect de automation (folosim site-ul pus de Alex) cu:
+  un test de login (de pe pagina de home -> sign in -> completez nume parola -> enter -> validam ca am primit mesajul de succes
+  test cu register (de pe home -> skip sign in -> completam casutele (country sau alta nu merge), NU dam click pe submit
+  (fac cu page objects? cate o clasa pentru fiecare pagina pe care testez, cu elementele luate dupa id, expath?)
+  ceva in genul a ce am facut la internship; fisier separat pentru credentiale si alte string uri?; sa incerc sa fac pe mai multe browsere
+  (edge, chrome, mozilla)
+
+
+
