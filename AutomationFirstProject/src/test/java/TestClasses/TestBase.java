@@ -7,29 +7,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
 public class TestBase {
-    public WebDriver driver;
+    public static WebDriver driver;
 
-    @BeforeMethod //inainte de fiecare test, BeforeClass - inainte de fiecare clasa de test ?!?
+    @BeforeClass //Before Method inainte de fiecare test, BeforeClass - inainte de fiecare clasa de test ?!?
     public void SetUp(){
-        driver = new ChromeDriver();
-        //driver = new FirefoxDriver();
-        //driver = new EdgeDriver()
-        driver.get("https://demo.automationtesting.in/Index.html");
+        var browser = "edge";
+        switch(browser){
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                //break;
+        }
         driver.manage().window().maximize();
+        driver.get("https://demo.automationtesting.in/Index.html");
     }
 
-    @AfterMethod
-    public void AfterTest(){
+    @AfterClass
+    public void AfterMethod(){
         driver.quit(); //close all tabs
         //driver.close(); //close the current tab
     }
 
-    //webdriver manager dependency - we dont need to download the .exe driver files for each browser
-    //seleniumhq are feature-ul asta de la ver 4.6 in sus.
-    //firefox driver nu merge fara gecko driver (testele pica la rulare), iar webdriver manager nu il are configurat
-    //fara un repository in pom.xml, iar maven nu mai accepta repositories in pom
-    // //System.setProperty("webdriver.gecko.driver", "./src/test/java/resources/geckodriver.exe");
-    // nu e compatibila ver de selenium cu ver de java?!?
 
 
 

@@ -9,5 +9,4 @@ public class Browser {
         this.driver = driver;
     }
 
-
 }

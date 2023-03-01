@@ -1,5 +1,6 @@
 package PageObjects;
 
+import TestClasses.TestBase;
 import Utils.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class RegisterPage {
     Browser browser;
-    private WebDriver driver;
+    private WebDriver driver = TestBase.driver;
 
     private WebElement firstNameField = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
     private WebElement lastNameField = driver.findElement(By.xpath("//input[@placeholder='Last Name']"));

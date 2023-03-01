@@ -1,5 +1,6 @@
 package PageObjects;
 
+import TestClasses.TestBase;
 import Utils.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import static java.lang.Thread.sleep;
 
 public class SignInPage {
     Browser browser;
-    private WebDriver driver;
+    private WebDriver driver = TestBase.driver;
 
     private WebElement emailField = driver.findElement(By.xpath("//input[@placeholder='E mail']"));
     private WebElement passwordField = driver.findElement(By.xpath("//input[@placeholder='Password']"));
@@ -22,9 +23,7 @@ public class SignInPage {
     }
 
     public SignInPage LoginWithInvalidCredentials(){
-        emailField.click();
         emailField.sendKeys("email@gmail.com");
-        passwordField.click();
         passwordField.sendKeys("password");
         enterButton.click();
         return new SignInPage(driver);
