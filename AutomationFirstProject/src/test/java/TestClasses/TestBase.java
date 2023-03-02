@@ -2,19 +2,21 @@ package TestClasses;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
+
 
 public class TestBase {
     public static WebDriver driver;
 
     @BeforeClass //Before Method inainte de fiecare test, BeforeClass - inainte de fiecare clasa de test ?!?
     public void SetUp(){
-        var browser = "edge";
+        var browser = "chrome";
         switch(browser){
             case "chrome":
-                driver = new ChromeDriver();
+                InitialiseChrome();
                 break;
             case "firefox":
                 driver = new FirefoxDriver();
@@ -33,8 +35,13 @@ public class TestBase {
         //driver.close(); //close the current tab
     }
 
-
-
-
-
+    private void InitialiseChrome() {
+        ChromeOptions options = new ChromeOptions();
+        //block pop-ups:
+        //options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
+        //block ads with addblocker extension:
+        //https://www.reddit.com/r/learnpython/comments/4zzn69/how_do_i_get_adblockplus_to_work_with_selenium/
+        options.addArguments("--load-extension=C:\\Git\\java_automation\\AutomationFirstProject\\src\\test\\java\\Utils\\1.47.2_0");
+        driver = new ChromeDriver(options);
+    }
 }

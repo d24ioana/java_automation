@@ -7,7 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 public class TestTest {
+    //Test without using page objects model
     @Test
     public void TestLogin() {
         WebDriver driver = new ChromeDriver();
@@ -23,5 +25,7 @@ public class TestTest {
         enterButton.click();
         WebElement errorMessage = driver.findElement(By.id("errormsg"));
         Assert.assertTrue(errorMessage.isDisplayed());
+
+        var languagesList = driver.findElements(By.xpath("//ul[contains(@style,'list')]"));
     }
 }
