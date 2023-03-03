@@ -87,5 +87,20 @@ De facut:
   ceva in genul a ce am facut la internship; fisier separat pentru credentiale si alte string uri?; sa incerc sa fac pe mai multe browsere
   (edge, chrome, mozilla)
 
+Alex Dorha: 03 mar 2023
+Doua exemple cu interfete si clase abstracte in proiectul JavaAutomation (Exemplu si Exemplu 2)
+
+De facut:
+- Un test care sa mearga din Index(home) -> skip sign in (ajunge pe pagina de register) -> merge cu mouse-ul si hover pe meniul SwitchTo 
+  -> Alege(face click) pe Alerts (ne duce pe primul tip de alerta) -> apasa pe prima alerta - ii da ok -> alege al doilea tip -> da click
+  pe ea -> ii da cancel sau ok -> verifica mesajul "you pressed ok/cancel" -> alege al treilea tip -> click pe alerta -> introduce text ->
+  press ok/cancel -> verifica mesajul aparut
+- Un test care din Index merge in register -> hover pe meniul Switchto -> click pe Windows -> ne duce pe primul tip -> dam click sa deschida
+  window-ul -> deschide un nou tab si ne duce automat pe el -> il inchidem si ne intoarcem in meniul Windows -> selectam al doilea tip ->
+  dam click -> deschide un nou window -> il inchidem -> ne intoarcem pe meniul de windows unde am ramas (la al doilea tip) -> selectam al
+  treilea tip -> click -> ne va deschide doua tab uri noi (addblock er le blocheaza, il scot) -> le inchid pe fiecare -> ma intorc in 
+  meniul Windows 
+
+
 
 

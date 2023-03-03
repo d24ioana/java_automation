@@ -8,12 +8,12 @@ public class TestFunctionality2 {
         System.out.println("Functionality2Test1Run");
     }
 
-    @Test
+    @Test(groups = {"login"})
     public void Test2(){
         System.out.println("Functionality2Test2Run");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void Test3(){
         System.out.println("Functionality2Test3Run");
     }

@@ -31,7 +31,7 @@ public class TestBase {
 
     @AfterMethod
     public void AfterMethod(){
-        driver.quit(); //close all tabs
+        //driver.quit(); //close all tabs
         //driver.close(); //close the current tab
     }
 

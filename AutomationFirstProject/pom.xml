@@ -49,6 +49,7 @@
         </dependency> -->
     </dependencies>
 
+    <!-- Trebuie surefire sau nu pentru a rula testng.xml sau intellij are by default plugin ul pt testng xml?-->
     <build>
         <pluginManagement>
             <plugins>

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
@@ -14,37 +16,52 @@ public class RegisterPage {
     private WebDriver driver = TestBase.driver;
 
     //region WebElements
-    private WebElement firstNameField = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
-    private WebElement lastNameField = driver.findElement(By.xpath("//input[@placeholder='Last Name']"));
-    private WebElement addressTextArea = driver.findElement(By.xpath("//textarea[@ng-model='Adress']"));
-    private WebElement emailField = driver.findElement(By.xpath("//input[@type='email']"));
-    private WebElement phoneField = driver.findElement(By.xpath("//input[@type='tel']"));
-    private WebElement maleRadio = driver.findElement(By.xpath("//input[@value='Male']"));
-    private WebElement femaleRadio = driver.findElement(By.xpath("//input[@value='FeMale']"));
-    private WebElement cricketCheckbox = driver.findElement(By.id("checkbox1"));
-    private WebElement moviesCheckbox = driver.findElement(By.id("checkbox2"));
+    @FindBy(xpath = "//input[@placeholder='First Name']")
+    private WebElement firstNameField;
+    @FindBy(xpath = "//input[@placeholder='Last Name']")
+    private WebElement lastNameField;
+    @FindBy(xpath = "//textarea[@ng-model='Adress']")
+    private WebElement addressTextArea;
+    @FindBy(xpath = "//input[@type='email']")
+    private WebElement emailField;
+    @FindBy(xpath = "//input[@type='tel']")
+    private WebElement phoneField;
 
-    private WebElement hockeyCheckbox = driver.findElement(By.id("checkbox3"));
-    private WebElement languagesAutocompleteMultiselect = driver.findElement(By.id("msdd"));
-    private WebElement skillsDropdown = driver.findElement(By.xpath("//select[@ng-model='Skill']"));
-    Select selectSkills = new Select(skillsDropdown);
-    private WebElement countryContainer = driver.findElement(By.xpath("//span[@role='combobox']")); //combobox
-    private WebElement birthYearDropdown = driver.findElement(By.id("yearbox"));
-    Select selectYear = new Select(birthYearDropdown);
-    private WebElement birthMonthDropdown = driver.findElement(By.xpath("//select[@ng-model='monthbox']"));
-    Select selectMonth = new Select(birthMonthDropdown);
-    private WebElement birthDayDropdown = driver.findElement(By.id("daybox"));
-    Select selectDay = new Select(birthDayDropdown);
-    private WebElement passwordField = driver.findElement(By.id("firstpassword"));
-    private WebElement confirmPasswordField = driver.findElement(By.id("secondpassword"));
+    @FindBy(xpath = "//input[@value='Male']")
+    private WebElement maleRadio;
+    @FindBy(xpath = "//input[@value='FeMale']")
+    private WebElement femaleRadio;
+    @FindBy(id = "checkbox1")
+    private WebElement cricketCheckbox;
+    @FindBy(id = "checkbox2")
+    private WebElement moviesCheckbox;
 
-    private WebElement uploadFile = driver.findElement(By.id("imagesrc"));
-    //cum fac sintaxa pt getter si setter?
+    @FindBy(id = "checkbox3")
+    private WebElement hockeyCheckbox;
+    @FindBy(id = "msdd")
+    private WebElement languagesAutocompleteMultiselect;
+    @FindBy(xpath = "//select[@ng-model='Skill']")
+    private WebElement skillsDropdown;
+    @FindBy(xpath = "//span[@role='combobox']")
+    private WebElement countryContainer;
+    @FindBy(id = "yearbox")
+    private WebElement birthYearDropdown;
+    @FindBy(xpath = "//select[@ng-model='monthbox']")
+    private WebElement birthMonthDropdown;
+    @FindBy(id = "daybox")
+    private WebElement birthDayDropdown;
+    @FindBy(id = "firstpassword")
+    private WebElement passwordField;
+    @FindBy(id = "secondpassword")
+    private WebElement confirmPasswordField;
+    @FindBy(id = "imagesrc")
+    private WebElement uploadFile;
     //endregion
 
     public RegisterPage(WebDriver driver){
         this.driver = driver;
         browser = new Browser(this.driver);
+        PageFactory.initElements(this.driver,this); //pentru FindBy
     }
 
     public RegisterPage InterractWithAllElements() {
@@ -67,6 +84,7 @@ public class RegisterPage {
         phoneField.click(); //to exit language select list
 
         //Interact with a dropdown menu (with a Select element):
+        Select selectSkills = new Select(skillsDropdown);
         selectSkills.selectByValue("PHP");
 
         //Interact with auto suggestion dropdown:
@@ -75,8 +93,11 @@ public class RegisterPage {
         SelectCountryMethod("South Africa");
 
         //Mixed from above:
+        Select selectYear = new Select(birthYearDropdown);
         selectYear.selectByValue("1999");
+        Select selectMonth = new Select(birthMonthDropdown);
         selectMonth.selectByIndex(1);
+        Select selectDay = new Select(birthDayDropdown);
         selectDay.selectByIndex(24);
         passwordField.sendKeys("abcd");
         confirmPasswordField.sendKeys("abcd");
