@@ -29,7 +29,7 @@ public class TestBase {
         driver.get("https://demo.automationtesting.in/Index.html");
     }
 
-    @AfterClass
+    @AfterMethod
     public void AfterMethod(){
         driver.quit(); //close all tabs
         //driver.close(); //close the current tab

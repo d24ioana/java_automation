@@ -11,5 +11,6 @@ public class RegisterPageTests extends TestBase{
         HomePage homePage = new HomePage(driver);
         RegisterPage registerPage = homePage.SkipSignIn();
         registerPage.InterractWithAllElements();
+        System.out.println("RegisterPageRunTest-InterractionWithWebElementsIsPossible");
     }
 }

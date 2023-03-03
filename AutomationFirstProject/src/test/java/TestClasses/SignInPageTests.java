@@ -13,5 +13,6 @@ public class SignInPageTests extends TestBase{
         signInPage.LoginWithInvalidCredentials();
         Assert.assertTrue(signInPage.LoginErrorDisplayed());
         Assert.assertEquals(signInPage.GetLoginErrorMessage(), "Invalid User Name or PassWord");
+        System.out.println("RegisterPageRunTest-InvalidCredentialsErrorIsShown");
     }
 }
