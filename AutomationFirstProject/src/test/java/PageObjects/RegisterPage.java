@@ -56,6 +56,9 @@ public class RegisterPage {
     private WebElement confirmPasswordField;
     @FindBy(id = "imagesrc")
     private WebElement uploadFile;
+
+    @FindBy(xpath = "//li[@class='dropdown'][1]") //"//a[contains(text(),'SwitchTo')]"
+    private WebElement switchToDropdown;
     //endregion
 
     public RegisterPage(WebDriver driver){
@@ -127,6 +130,32 @@ public class RegisterPage {
         searchCountry.sendKeys(countryName);
         searchCountry.sendKeys(Keys.ARROW_DOWN);
         searchCountry.sendKeys(Keys.ENTER);
+    }
+
+    public AlertsPage NavigateToAlertsPage(){
+        browser.HoverOnElement(switchToDropdown);
+        ChooseSwitchToMenuOption("Alerts");
+        return new AlertsPage(driver);
+    }
+
+    public WindowsPage NavigateToWindowsPage(){
+        browser.HoverOnElement(switchToDropdown);
+        ChooseSwitchToMenuOption("Windows");
+        return new WindowsPage(driver);
+    }
+
+    private void ChooseSwitchToMenuOption(String mySwitchToOption) {
+        try{
+            List<WebElement> switchToMenuList = switchToDropdown.findElements(By.xpath("//li[@class='dropdown'][1]/ul/li"));
+            for (WebElement switchToOption : switchToMenuList) {
+                if (switchToOption.getText().equals(mySwitchToOption)){
+                    switchToOption.click();
+                }
+            }
+        }
+        catch(org.openqa.selenium.StaleElementReferenceException ex){}
+        //try catch pentru org.openqa.selenium.StaleElementReferenceException: stale element reference:
+        // element is not attached to the page document
     }
 
     //region Comments

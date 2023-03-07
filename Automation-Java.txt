@@ -98,8 +98,8 @@ De facut:
 - Un test care din Index merge in register -> hover pe meniul Switchto -> click pe Windows -> ne duce pe primul tip -> dam click sa deschida
   window-ul -> deschide un nou tab si ne duce automat pe el -> il inchidem si ne intoarcem in meniul Windows -> selectam al doilea tip ->
   dam click -> deschide un nou window -> il inchidem -> ne intoarcem pe meniul de windows unde am ramas (la al doilea tip) -> selectam al
-  treilea tip -> click -> ne va deschide doua tab uri noi (addblock er le blocheaza, il scot) -> le inchid pe fiecare -> ma intorc in 
-  meniul Windows 
+  treilea tip -> click -> ne va deschide doua tab uri noi (addblock er le blocheaza, il scot, doar pt testul asta?!?) -> le inchid pe 
+  fiecare -> ma intorc in meniul Windows 
 
 
 

@@ -24,4 +24,10 @@ public class Browser {
         new WebDriverWait(driver, Duration.ofSeconds(seconds))
                 .until(ExpectedConditions.visibilityOf(webElement));
     }
+
+    public void HoverOnElement(WebElement element){
+        Actions builder = new Actions(driver);
+        builder.moveToElement(element).build().perform();
+    }
+
 }
