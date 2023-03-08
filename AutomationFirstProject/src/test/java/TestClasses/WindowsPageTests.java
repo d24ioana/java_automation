@@ -11,6 +11,7 @@ public class WindowsPageTests extends TestBase{
         HomePage homePage = new HomePage(driver);
         RegisterPage registerPage = homePage.SkipSignIn();
         WindowsPage windowsPage = registerPage.NavigateToWindowsPage();
-
+        windowsPage.TestSeleniumWindows();
     }
+
 }
