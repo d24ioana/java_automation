@@ -41,7 +41,9 @@ public class TestBase {
         //options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
         //block ads with addblocker extension:
         //https://www.reddit.com/r/learnpython/comments/4zzn69/how_do_i_get_adblockplus_to_work_with_selenium/
-        options.addArguments("--load-extension=C:\\Git\\java_automation\\AutomationFirstProject\\src\\test\\java\\Utils\\1.47.2_0");
+        options.addArguments("--load-extension=C:\\Git\\java_automation\\AutomationFirstProject\\src\\test\\java\\Utils\\1.47.2_0", "--remote-allow-origins=*");
+        //primul argument e pentru extensia de addBlock, al doilea pentru ceva problema la selenium pentru
+        //chrome ver 111.0.5563.65
         driver = new ChromeDriver(options);
     }
 }

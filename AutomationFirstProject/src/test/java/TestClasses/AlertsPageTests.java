@@ -13,4 +13,5 @@ public class AlertsPageTests extends TestBase{
         AlertsPage alertsPage = registerPage.NavigateToAlertsPage();
         alertsPage.TestAlerts();
     }
+
 }
