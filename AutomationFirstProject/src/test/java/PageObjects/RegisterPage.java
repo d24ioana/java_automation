@@ -56,9 +56,16 @@ public class RegisterPage {
     private WebElement confirmPasswordField;
     @FindBy(id = "imagesrc")
     private WebElement uploadFile;
-
     @FindBy(xpath = "//li[@class='dropdown'][1]") //"//a[contains(text(),'SwitchTo')]"
     private WebElement switchToDropdown;
+    @FindBy(xpath = "//ul[contains(@style,'list')]")
+    WebElement languagesUl;
+    @FindBy(xpath = "//ul[contains(@style,'list')]/li")
+    List<WebElement> languagesList;
+    @FindBy(xpath = "//input[@type='search']")
+    WebElement searchCountry;
+    @FindBy(xpath = "//li[@class='dropdown'][1]/ul/li")
+    List<WebElement> switchToMenuList;
     //endregion
 
     public RegisterPage(WebDriver driver){
@@ -111,11 +118,8 @@ public class RegisterPage {
     }
 
     private void ChooseALanguage(String myLanguage) {
-        WebElement languagesUl = driver.findElement(By.xpath("//ul[contains(@style,'list')]"));
-        //List<WebElement> languagesList = languagesUl.findElements(By.tagName("li"));
         browser.WaitForElementToBeDisplayed(5,languagesUl);
 
-        List<WebElement> languagesList = driver.findElements(By.xpath("//ul[contains(@style,'list')]/li"));
         for (WebElement language : languagesList) {
             if (language.getText().equals(myLanguage)){
                 language.click();
@@ -124,7 +128,6 @@ public class RegisterPage {
     }
 
     private void SelectCountryMethod(String countryName) {
-        WebElement searchCountry = driver.findElement(By.xpath("//input[@type='search']"));
         //new WebDriverWait(driver, Duration.ofSeconds(5));
 
         searchCountry.sendKeys(countryName);
@@ -146,7 +149,6 @@ public class RegisterPage {
 
     private void ChooseSwitchToMenuOption(String mySwitchToOption) {
         try{
-            List<WebElement> switchToMenuList = switchToDropdown.findElements(By.xpath("//li[@class='dropdown'][1]/ul/li"));
             for (WebElement switchToOption : switchToMenuList) {
                 if (switchToOption.getText().equals(mySwitchToOption)){
                     switchToOption.click();

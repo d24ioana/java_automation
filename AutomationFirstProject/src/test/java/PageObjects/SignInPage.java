@@ -12,6 +12,7 @@ public class SignInPage {
     Browser browser;
     private WebDriver driver = TestBase.driver;
 
+    //region WebElements
     @FindBy(xpath = "//input[@placeholder='E mail']")
     private WebElement emailField;
     @FindBy(xpath = "//input[@placeholder='Password']")
@@ -20,6 +21,7 @@ public class SignInPage {
     private WebElement enterButton;
     @FindBy(id = "errormsg")
     private WebElement errorMessage;
+    //endregion
 
     public SignInPage(WebDriver driver){
         this.driver = driver;

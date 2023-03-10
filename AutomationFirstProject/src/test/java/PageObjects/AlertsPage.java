@@ -2,6 +2,7 @@ package PageObjects;
 
 import TestClasses.TestBase;
 import Utils.Browser;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +19,24 @@ import java.util.concurrent.TimeUnit;
 
 public class AlertsPage {
     Browser browser;
-
     private WebDriver driver = TestBase.driver;
 
+    //region WebElements
     @FindBy(xpath = "//div[@class='tabpane pullleft']")
     private WebElement typesOfAlertsTabPane;
+    @FindBy(xpath = "//div[@class='tabpane pullleft']/ul/li")
+    List<WebElement> alertTypesList;
+    @FindBy(xpath = "//button[@class='btn btn-danger']")
+    WebElement alertWithOKButton;
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    WebElement alertWithOKAndCancelButton;
+    @FindBy(id = "demo")
+    WebElement messageShowedAfterHandlingAlert;
+    @FindBy(xpath = "//button[@class='btn btn-info']")
+    WebElement alertWithTextboxButton;
+    @FindBy(id = "demo1")
+    WebElement messageShowedAfterHandlingAlert1;
+    //endregion
 
     public AlertsPage(WebDriver driver){
         this.driver = driver;
@@ -42,7 +56,6 @@ public class AlertsPage {
     }
 
     private void ChooseAlert(String myAlert){
-        List<WebElement> alertTypesList = driver.findElements(By.xpath("//div[@class='tabpane pullleft']/ul/li"));
         for(WebElement alertType : alertTypesList){
             if(alertType.getText().equals(myAlert)){
                 alertType.click();
@@ -51,15 +64,12 @@ public class AlertsPage {
     }
 
     private void HandleFirstTypeOfAlert() {
-        WebElement alertWithOKButton = driver.findElement(By.xpath("//button[@class='btn btn-danger']"));
         alertWithOKButton.click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
 
-    private void HandleSecondTypeOfAlert(String whatToDoWithAlert){
-        WebElement alertWithOKAndCancelButton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
-        WebElement messageShowedAfterHandlingAlert = driver.findElement(By.id("demo"));
+    private void HandleSecondTypeOfAlert(@NotNull String whatToDoWithAlert){
         alertWithOKAndCancelButton.click();
         Alert alert = driver.switchTo().alert();
         if(whatToDoWithAlert.equalsIgnoreCase("ok")) {
@@ -72,15 +82,13 @@ public class AlertsPage {
         }
     }
 
-    private void HandleThirdTypeOfAlert(String whatToDoWithAlert, String textToInsert){
-        WebElement alertWithTextboxButton = driver.findElement(By.xpath("//button[@class='btn btn-info']"));
-        WebElement messageShowedAfterHandlingAlert = driver.findElement(By.id("demo1"));
+    private void HandleThirdTypeOfAlert(@NotNull String whatToDoWithAlert, String textToInsert){
         alertWithTextboxButton.click();
         Alert alert = driver.switchTo().alert();
         if(whatToDoWithAlert.equalsIgnoreCase("ok")){
             alert.sendKeys(textToInsert);
             alert.accept();
-            Assert.assertEquals(messageShowedAfterHandlingAlert.getText(),"Hello " + textToInsert + " How are you today");
+            Assert.assertEquals(messageShowedAfterHandlingAlert1.getText(),"Hello " + textToInsert + " How are you today");
         }
         else if(whatToDoWithAlert.equalsIgnoreCase("cancel")){
             alert.dismiss();

@@ -102,10 +102,8 @@ De facut:
   fiecare -> ma intorc in meniul Windows 
 
 Intrebari pentru Alex: 
-1.) In register page, la navigarea din register in switch to menu, cand aleg slerts sau windows primesc staleelement
+1.) In register page, la navigarea din register in switch to menu, cand aleg alerts sau windows primesc stale element
 reference exception. selenium face ce vreau eu dar arunca exceptia asta la rularea testului. am facut un try catch pentru ea, e ok?
-2.) FindBy nu poate fi folosit pentru a declara elemente in metode, se face altfel sau e ok sa folosesc in metoda driver.findelement?
-(unele elemente le declar in metoda pentru ca de exemplu nu sunt visibile pe pagina pana nu apas alt element sau selectez alt element)
 
 
 

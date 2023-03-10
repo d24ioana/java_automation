@@ -17,11 +17,20 @@ import java.util.Set;
 
 public class WindowsPage {
     Browser browser;
-
     private WebDriver driver = TestBase.driver;
 
+    //region WebElements
     @FindBy(xpath = "//div[@class='tabpane pullleft']")
     private WebElement typesOfSeleniumWindows;
+    @FindBy(xpath = "//div[@class='tabpane pullleft']/ul/li")
+    List<WebElement> seleniumWindowsTypesList;
+    @FindBy(xpath = "//a[@target='_blank']/button")
+    WebElement tabbedWindowsButton;
+    @FindBy(xpath = "//button[@onclick='newwindow()']")
+    WebElement newSeparateWindowsButton;
+    @FindBy(xpath = "//button[@onclick='multiwindow()']")
+    WebElement separateMultipleWindowsButton;
+    //endregion
 
     public WindowsPage(WebDriver driver){
         this.driver = driver;
@@ -39,7 +48,6 @@ public class WindowsPage {
     }
 
     private void ChooseWindowType(String myWindowType){
-        List<WebElement> seleniumWindowsTypesList = driver.findElements(By.xpath("//div[@class='tabpane pullleft']/ul/li"));
         for(WebElement seleniumWindowsType : seleniumWindowsTypesList){
             if(seleniumWindowsType.getText().equalsIgnoreCase(myWindowType)){
                 seleniumWindowsType.click();
@@ -48,21 +56,18 @@ public class WindowsPage {
     }
 
     private void HandleFirstTypeOfSeleniumWindows(){
-        WebElement tabbedWindowsButton = driver.findElement(By.xpath("//a[@target='_blank']/button"));
         tabbedWindowsButton.click();
         WaitForNewWindowsToBeOpenedAndCheckTotalNumberOfWindows(2);
         GetWindowsHandlesAndCloseTheChildWindows();
     }
 
     private void HandleSecondTypeOfSeleniumWindows(){
-        WebElement newSeparateWindowsButton = driver.findElement(By.xpath("//button[@onclick='newwindow()']"));
         newSeparateWindowsButton.click();
         WaitForNewWindowsToBeOpenedAndCheckTotalNumberOfWindows(2);
         GetWindowsHandlesAndCloseTheChildWindows();
     }
 
     private void HandleThirdTypeOfSeleniumWindows(){
-        WebElement separateMultipleWindowsButton = driver.findElement(By.xpath("//button[@onclick='multiwindow()']"));
         separateMultipleWindowsButton.click();
         WaitForNewWindowsToBeOpenedAndCheckTotalNumberOfWindows(3);
         GetWindowsHandlesAndCloseTheChildWindows();

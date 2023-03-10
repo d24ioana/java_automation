@@ -12,10 +12,12 @@ public class HomePage {
     Browser browser;
     private WebDriver driver = TestBase.driver;
 
+    //region WebElements
     @FindBy(id = "btn1")
     private WebElement signInButton;
     @FindBy(id = "btn2")
     private WebElement skipSignInButton;
+    //endregion
 
     public HomePage(WebDriver driver){
         this.driver = driver;
