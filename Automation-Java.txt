@@ -105,6 +105,16 @@ Intrebari pentru Alex:
 1.) In register page, la navigarea din register in switch to menu, cand aleg alerts sau windows primesc stale element
 reference exception. selenium face ce vreau eu dar arunca exceptia asta la rularea testului. am facut un try catch pentru ea, e ok?
 
+Alex Dorha: 10 mar 2023
+I-am aratat ce am lucrat
+
+De facut: iFrames de pe site-ul automation demo site https://demo.automationtesting.in/Frames.html
+Din postman: request-uri-le de pe https://reqres.in/ + validari pe request-uri (status code 200, body etc)
+Din postman: new collection, nume, enter -> click dr pe ea -> new request, nume, tip -> merg pe reqres -> imi aleg metoda/requestul -> 
+	     click pe link-ul din request -> copy url-ul din bara -> introdus in postman -> send -> vad raspunsul (body);
+	     pentru a adauga validari merg in request la Tests, in dreapta am o lista din care pot alege validari, dau iar send la request
+	     verific Test Results. Postman nu salveaza automat request-urile noi, dau ctrl+s
+
 
 
 
