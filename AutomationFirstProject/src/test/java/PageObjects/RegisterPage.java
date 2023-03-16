@@ -147,6 +147,12 @@ public class RegisterPage {
         return new WindowsPage(driver);
     }
 
+    public FramesPage NavigateToFramesPage(){
+        browser.HoverOnElement(switchToDropdown);
+        ChooseSwitchToMenuOption("Frames");
+        return new FramesPage(driver);
+    }
+
     private void ChooseSwitchToMenuOption(String mySwitchToOption) {
         try{
             for (WebElement switchToOption : switchToMenuList) {
