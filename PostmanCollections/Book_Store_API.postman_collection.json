@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "7f905d21-b744-4275-96a0-a7cbce5adc6f",
+		"name": "Book Store API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14028601"
+	},
+	"item": [
+		{
+			"name": "Create user -  /Account/v1/User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// access the response:\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// save something from the response into a variable:\r",
+							"var id = jsonData.userID;\r",
+							"pm.collectionVariables.set(\"user_id\", id);\r",
+							"\r",
+							"//!!!only send this request once (for a new user) to get its id, otherwise you'll get the user code"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"Sarahh\",\r\n  \"password\": \"Diesel5*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create token -  /Account/v1/GenerateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// access the response:\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// save something from the response into a variable:\r",
+							"var token = jsonData.token;\r",
+							"pm.collectionVariables.set(\"user_token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"Sarahh\",\r\n  \"password\": \"Diesel5*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/GenerateToken",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"GenerateToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get authorized - /Account/v1/Authorized",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"Sarahh\",\r\n  \"password\": \"Diesel5*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/Authorized",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"Authorized"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user - /Account/v1/User/{UUID}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user - /Account/v1/User/{UUID}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of books - /BookStore/v1/Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// access the response:\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// save something from the response into a variable:\r",
+							"var isbn1 = jsonData.books[0].isbn;\r",
+							"pm.collectionVariables.set(\"book1isbn\", isbn1);\r",
+							"\r",
+							"var isbn2 = jsonData.books[1].isbn;\r",
+							"pm.collectionVariables.set(\"book2isbn\", isbn2);\r",
+							"\r",
+							"var isbn3 = jsonData.books[2].isbn;\r",
+							"pm.collectionVariables.set(\"book3isbn\", isbn3);\r",
+							"\r",
+							"var isbn4 = jsonData.books[3].isbn;\r",
+							"pm.collectionVariables.set(\"book4isbn\", isbn4);\r",
+							"\r",
+							"var isbn5 = jsonData.books[4].isbn;\r",
+							"pm.collectionVariables.set(\"book5isbn\", isbn5);\r",
+							"\r",
+							"var isbn6 = jsonData.books[5].isbn;\r",
+							"pm.collectionVariables.set(\"book6isbn\", isbn6);\r",
+							"\r",
+							"var isbn7 = jsonData.books[6].isbn;\r",
+							"pm.collectionVariables.set(\"book7isbn\", isbn7);\r",
+							"\r",
+							"var isbn8 = jsonData.books[7].isbn;\r",
+							"pm.collectionVariables.set(\"book8isbn\", isbn8);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add books to a user - /BookStore/v1/Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"{{user_id}}\",\r\n  \"collectionOfIsbns\": [\r\n    {\r\n      \"isbn\": \"{{book5isbn}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete al books from a user - /BookStore/v1/Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books?UserId={{user_id}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "UserId",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for a book in Books Collection -  /BookStore/v1/Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Book?ISBN={{book8isbn}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Book"
+					],
+					"query": [
+						{
+							"key": "ISBN",
+							"value": "{{book8isbn}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete one book from a user - /BookStore/v1/Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isbn\": \"{{book5isbn}}\",\r\n  \"userId\": \"{{user_id}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Book",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change one book for another - /BookStore/v1/Books/{ISBN}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"{{user_id}}\",\r\n  \"isbn\": \"{{book5isbn}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books/{{book6isbn}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books",
+						"{{book6isbn}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "user_token",
+			"value": ""
+		},
+		{
+			"key": "book1isbn",
+			"value": ""
+		},
+		{
+			"key": "book2isbn",
+			"value": ""
+		},
+		{
+			"key": "book3isbn",
+			"value": ""
+		},
+		{
+			"key": "book4isbn",
+			"value": ""
+		},
+		{
+			"key": "book5isbn",
+			"value": ""
+		},
+		{
+			"key": "book6isbn",
+			"value": ""
+		},
+		{
+			"key": "book7isbn",
+			"value": ""
+		},
+		{
+			"key": "book8isbn",
+			"value": ""
+		}
+	]
+}
