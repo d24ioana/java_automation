@@ -115,7 +115,20 @@ Din postman: new collection, nume, enter -> click dr pe ea -> new request, nume,
 	     pentru a adauga validari merg in request la Tests, in dreapta am o lista din care pot alege validari, dau iar send la request
 	     verific Test Results. Postman nu salveaza automat request-urile noi, dau ctrl+s
 
+Alex Dorha: 17 mar 2023
+De facut: pe Bookstore API din Postman un flow: Creat user/cont, salvat id -> creat token, salvat token -> autorizare -> add books request
+	  -> update a book -> delete all books -> delete the user
 
+          Putem salva raspunsul de la un request intr-o variabila de sistem (ex, raspunsul de la get), (ave var de colectie, de env si globale)
+	  Request-urile se fac cu userid si token (token-ul pus in sectia de authorisation la request sau la colectia in care e request-ul)
+
+Alex Dorha: 24 mar 2023
+De facut: un flow in intellij cum am facut anterior in postman secventa de request-uri
+	  ne definim un base uri
+          facem un request specification 
+	  adaugam body daca request-ul are
+          validam raspunsul 
+	  ne salvam parti din raspuns ca variabile globale/statice ca se le putem folosi mai departe
 
 
 
