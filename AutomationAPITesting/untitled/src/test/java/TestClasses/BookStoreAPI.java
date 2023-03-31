@@ -5,7 +5,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 
@@ -145,5 +144,6 @@ public class BookStoreAPI {
         //Validare status code 204 no content:
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 204);
+        System.out.println("The user with the following id: " + userId + " has been deleted from bookstore system");
     }
 }
